@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PatternNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
+public class PatternNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public int nodeId; // 1~9
+    public int nodeId;
     public PatternManager manager;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -15,5 +15,10 @@ public class PatternNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         manager.AddNode(this);
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        manager.EndPattern();
     }
 }

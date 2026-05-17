@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
 
-public class PatternManager : MonoBehaviour, IPointerUpHandler
+public class PatternManager : MonoBehaviour
 {
     public TextMeshProUGUI statusText; 
     public List<int> correctPattern = new List<int> { 1, 2, 3, 6, 9 }; // 설정할 비밀번호
@@ -19,6 +19,9 @@ public class PatternManager : MonoBehaviour, IPointerUpHandler
         currentPattern.Clear();
         ResetNodesColor();
         AddNode(node);
+
+        statusText.text = "입력 중..."; 
+        statusText.color = Color.yellow;
     }
 
     public void AddNode(PatternNode node)
@@ -33,7 +36,7 @@ public class PatternManager : MonoBehaviour, IPointerUpHandler
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void EndPattern()
     {
         isDrawing = false;
         CheckPattern();
@@ -56,13 +59,13 @@ public class PatternManager : MonoBehaviour, IPointerUpHandler
             }
         }
 
-        statusText.text = "ACCESS GRANTED";
+        statusText.text = "ACCESS \n COMPLETE";
         statusText.color = Color.green;
     }
 
     void Fail()
     {
-        statusText.text = "ERROR: WRONG PATTERN";
+        statusText.text = "ERROR: \n WRONG PATTERN";
         statusText.color = Color.red;
         Invoke("ResetNodesColor", 1f); 
     }

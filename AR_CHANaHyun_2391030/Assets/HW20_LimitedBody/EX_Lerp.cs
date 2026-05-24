@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger_Lerp : MonoBehaviour, IInteractable
+public class TriggerLerp : MonoBehaviour, IInteractable
 {
     public List<Transform> TargetPoints;
     public Transform NextPoint;

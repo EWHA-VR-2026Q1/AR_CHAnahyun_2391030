@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 public class Trigger_PhysicalMousePointer : MonoBehaviour
@@ -44,13 +44,11 @@ public class Trigger_PhysicalMousePointer : MonoBehaviour
             Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform == transform || hit.transform.IsChildOf(transform))
-                {
-                    // 여기서 클릭된 오브젝트에 따른 로직 수행
-                    Debug.Log($"오브젝트 클릭됨: {hit.transform.name}");
-                    // 인터페이스나 특정 컴포넌트 호출
-                    interactableInterface?.OnClick(SenderObject);
-                }
+                // 여기서 클릭된 오브젝트에 따른 로직 수행
+                Debug.Log($"오브젝트 클릭됨: {hit.transform.name}");
+                
+                // 인터페이스나 특정 컴포넌트 호출
+                interactableInterface?.OnClick(SenderObject);
             }
         }
     }

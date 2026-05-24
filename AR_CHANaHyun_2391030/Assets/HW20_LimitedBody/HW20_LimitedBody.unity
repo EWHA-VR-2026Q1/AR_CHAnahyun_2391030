@@ -296,7 +296,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -533,7 +533,7 @@ Transform:
   m_GameObject: {fileID: 354733963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1369}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 1802061926}
   - component: {fileID: 1802061925}
   - component: {fileID: 1802061924}
-  - component: {fileID: 1802061923}
+  - component: {fileID: 1802061927}
   m_Layer: 0
   m_Name: Ground Plane Stage
   m_TagString: Untagged
@@ -1532,23 +1532,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1802061923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802061922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1308684972, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1802061925}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: 
-  mDatasetName: 
-  mCastedBehaviour: {fileID: 1802061925}
 --- !u!114 &1802061924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,7 +1596,7 @@ MonoBehaviour:
   mSelectedStageType: 0
   mPlaneReference: {fileID: 0}
   mMidAirReference: {fileID: 0}
-  mPreview: {fileID: 1802061923}
+  mPreview: {fileID: 1802061927}
 --- !u!4 &1802061926
 Transform:
   m_ObjectHideFlags: 0
@@ -1631,6 +1614,23 @@ Transform:
   - {fileID: 1865605092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1802061927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802061922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1308684972, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1802061925}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: 
+  mDatasetName: 
+  mCastedBehaviour: {fileID: 1802061925}
 --- !u!1 &1840426361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1833,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 public class Trigger_PhysicalMousePointer : MonoBehaviour
 {
-    
+
     private Camera _mainCamera;
 
     [Header("Target Interface")]
@@ -16,8 +16,8 @@ public class Trigger_PhysicalMousePointer : MonoBehaviour
     private void Awake()
     {
         _mainCamera = Camera.main;
-        if(InterfaceObject == null) InterfaceObject = gameObject;
-                InterfaceBase = InterfaceObject.GetComponent<IInteractable>();
+        if (InterfaceObject == null) InterfaceObject = gameObject;
+        InterfaceBase = InterfaceObject.GetComponent<IInteractable>();
         if (SenderObject == null) SenderObject = gameObject;
     }
 
@@ -45,10 +45,13 @@ public class Trigger_PhysicalMousePointer : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 // 여기서 클릭된 오브젝트에 따른 로직 수행
-                Debug.Log($"오브젝트 클릭됨: {hit.transform.name}");
-                
-                // 인터페이스나 특정 컴포넌트 호출
-                interactableInterface?.OnClick(SenderObject);
+                if (hit.transform.gameObject == gameObject || hit.transform.IsChildOf(transform))
+                {
+                    Debug.Log($"오브젝트 클릭됨: {hit.transform.name}");
+
+                    // 인터페이스나 특정 컴포넌트 호출
+                    interactableInterface?.OnClick(SenderObject);
+                }
             }
         }
     }

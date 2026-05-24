@@ -5,8 +5,8 @@ public class LerpPoints : MonoBehaviour, IInteractable
 {
     private Camera mainCamera;
     private bool isDragging = false;
-    private float zDistance;
     private Vector3 offset;
+    private Plane dragPlane;
 
     private void Awake()
     {
@@ -18,16 +18,18 @@ public class LerpPoints : MonoBehaviour, IInteractable
         var pointer = Pointer.current;
         if (pointer == null) return;
 
-        Vector2 screenPos = pointer.position.ReadValue();
         isDragging = true;
 
-        zDistance = mainCamera.WorldToScreenPoint(transform.position).z;
-        Vector3 clickWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, zDistance));
+        dragPlane = new Plane(transform.up, transform.position);
 
-        if (transform.parent != null)
-            offset = transform.localPosition - transform.parent.InverseTransformPoint(clickWorldPos);
-        else
+        Vector2 screenPos = pointer.position.ReadValue();
+        Ray ray = mainCamera.ScreenPointToRay(screenPos);
+
+        if (dragPlane.Raycast(ray, out float enter))
+        {
+            Vector3 clickWorldPos = ray.GetPoint(enter);
             offset = transform.position - clickWorldPos;
+        }
 
         Renderer rend = GetComponentInChildren<Renderer>();
         if (rend != null) rend.material.color = Color.red;
@@ -48,13 +50,18 @@ public class LerpPoints : MonoBehaviour, IInteractable
         if (isDragging)
         {
             Vector2 screenPos = pointer.position.ReadValue();
-            Vector3 mousePoint = new Vector3(screenPos.x, screenPos.y, zDistance);
-            Vector3 newPosition = mainCamera.ScreenToWorldPoint(mousePoint);
+            Ray ray = mainCamera.ScreenPointToRay(screenPos);
 
-            transform.position = new Vector3(newPosition.x, transform.position.y, newPosition.z);
+            if (dragPlane.Raycast(ray, out float enter))
+            {
+                Vector3 targetPos = ray.GetPoint(enter) + offset;
+
+                transform.position = targetPos;
+            }
         }
     }
 
+    // --- 인터페이스 필수 구현부 ---
     public void OnEnter() { }
     public void OnExit() { }
     public void OnStay() { }

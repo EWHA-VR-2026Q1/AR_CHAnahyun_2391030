@@ -1,31 +1,36 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine.SceneManagement; // 씬 이름을 가져오기 위해 추가
+using UnityEngine.SceneManagement;
 
-// ... (TransformData, WorldData 정의는 기존과 동일)
 
 public class Actor_DataSaverLoader : MonoBehaviour
 {
     [Header("Objects To Save")]
+    [Tooltip("다이얼 등")]
     public List<GameObject> targetObjects = new List<GameObject>();
 
-    // [수정] 고정된 savePath 대신 현재 씬 이름을 기반으로 경로를 반환하는 프로퍼티를 씁니다.
     private string GetSavePath()
     {
-        // 예: 현재 씬 이름이 "Stage_01" 이라면 "Stage_01_worldData.json"으로 저장됨
         string currentSceneName = SceneManager.GetActiveScene().name;
         return Path.Combine(Application.persistentDataPath, currentSceneName + "_worldData.json");
     }
-
-    private void Awake()
+    private string GetFullPath(GameObject obj)
     {
-        // [수정] 기존 Awake나 Start에 있던 savePath = ... 지우기 (지워도 무방)
+        string path = obj.name;
+        Transform current = obj.transform;
+
+        while (current.parent != null)
+        {
+            current = current.parent;
+            path = current.name + "/" + path;
+        }
+        return path;
     }
 
     public void Act_SaveData()
     {
-        if (targetObjects.Count == 0) return; // 저장할 대상이 없으면 스킵
+        if (targetObjects.Count == 0) return;
 
         WorldData data = new WorldData();
 
@@ -34,7 +39,7 @@ public class Actor_DataSaverLoader : MonoBehaviour
             if (obj == null) continue;
 
             TransformData t = new TransformData();
-            t.objectName = obj.name;
+            t.objectName = GetFullPath(obj); // 그냥 이름 대신 '전체 경로'를 저장
             t.position = obj.transform.position;
             t.rotation = obj.transform.rotation;
 
@@ -42,8 +47,6 @@ public class Actor_DataSaverLoader : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(data, true);
-        
-        // [수정] 실시간 씬 이름 경로로 저장
         string path = GetSavePath();
         File.WriteAllText(path, json);
 
@@ -52,13 +55,11 @@ public class Actor_DataSaverLoader : MonoBehaviour
 
     public void Act_LoadData()
     {
-        // [수정] 실시간 씬 이름 경로에서 가져옴
         string path = GetSavePath();
 
         if (!File.Exists(path))
         {
-            // ★ 매우 중요: 이 씬을 처음 방문했거나 파일이 없다면 기존 배치 상태 그대로 놔둡니다.
-            Debug.Log($"[{SceneManager.GetActiveScene().name}] 처음 방문한 씬이거나 세이브 파일이 없어 기본 위치를 유지합니다.");
+            Debug.Log($"[{SceneManager.GetActiveScene().name}] 세이브 파일이 없어 기본 위치를 유지합니다.");
             return;
         }
 
@@ -80,11 +81,13 @@ public class Actor_DataSaverLoader : MonoBehaviour
         {
             if (obj == null) continue;
 
-            if (savedDataMap.TryGetValue(obj.name, out TransformData targetData))
+            string fullPath = GetFullPath(obj); // 로드할 때도 내 '전체 경로'를 만들어 검색
+
+            if (savedDataMap.TryGetValue(fullPath, out TransformData targetData))
             {
                 obj.transform.position = targetData.position;
                 obj.transform.rotation = targetData.rotation;
-                
+
                 if (obj.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.velocity = Vector3.zero;
@@ -96,7 +99,6 @@ public class Actor_DataSaverLoader : MonoBehaviour
         Debug.Log($"[{SceneManager.GetActiveScene().name}] 로드 완료!");
     }
 
-    // 초기화 함수도 현재 씬 파일만 지우도록 수정
     public void Act_ResetAndClearData()
     {
         string path = GetSavePath();

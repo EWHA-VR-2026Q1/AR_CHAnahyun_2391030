@@ -2249,9 +2249,9 @@ MonoBehaviour:
   dial2: {fileID: 524303788}
   dial3: {fileID: 1529225202}
   shackle: {fileID: 2193840290950729742}
-  checkAxis: 2
+  checkAxis: 1
   targetAngle: 0
-  openOffset: {x: 0, y: 0.5, z: 0}
+  openOffset: {x: 0, y: 0.025, z: 0}
 --- !u!1 &1112988073
 GameObject:
   m_ObjectHideFlags: 0
@@ -6127,7 +6127,7 @@ Transform:
   m_GameObject: {fileID: 3617158682974187509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0245, y: 0.0485, z: 0}
+  m_LocalPosition: {x: 0.0245, y: 0.0457, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7245,7 +7245,7 @@ Transform:
   m_GameObject: {fileID: 3617524672260162343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.957, y: 1.4, z: 2.38}
+  m_LocalPosition: {x: 0.957, y: 1.183, z: 2.38}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:

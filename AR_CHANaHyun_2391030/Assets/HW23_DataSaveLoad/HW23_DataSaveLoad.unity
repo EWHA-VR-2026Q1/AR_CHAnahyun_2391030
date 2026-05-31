@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168085027}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 230782394}
   - component: {fileID: 230782393}
   - component: {fileID: 230782392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268248189}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 430610228}
   - component: {fileID: 430610227}
   - component: {fileID: 430610226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,8 +968,10 @@ GameObject:
   - component: {fileID: 524303791}
   - component: {fileID: 524303790}
   - component: {fileID: 524303789}
+  - component: {fileID: 524303794}
   - component: {fileID: 524303792}
-  m_Layer: 0
+  - component: {fileID: 524303793}
+  m_Layer: 3
   m_Name: Dial_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1013,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.53
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1077,8 +1079,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be542a6cf661f7f4e94e8bb64fe63f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 15
-  rotationAxis: {x: 1, y: 0, z: 0}
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationStep: 36
+--- !u!114 &524303793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524303787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248e449101d9d4595b914f5f6daa79ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &524303794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524303787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea6f937ff3d45eca7be4b21dde7679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 524303792}
+        m_TargetAssemblyTypeName: DialRotator, Assembly-CSharp
+        m_MethodName: Act_RotateDial
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 524303787}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &550292903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2014,7 +2064,7 @@ GameObject:
   - component: {fileID: 861526072}
   - component: {fileID: 861526071}
   - component: {fileID: 861526070}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2118,6 +2168,8 @@ GameObject:
   - component: {fileID: 942265805}
   - component: {fileID: 942265804}
   - component: {fileID: 942265803}
+  - component: {fileID: 942265806}
+  - component: {fileID: 942265807}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -2169,6 +2221,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &942265806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942265802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44288b981c29d142b662d68c6bf0fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &942265807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942265802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d774bd136d9143ba02fb5538bceab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dial1: {fileID: 1922615908}
+  dial2: {fileID: 524303788}
+  dial3: {fileID: 1529225202}
+  shackle: {fileID: 2193840290950729742}
+  checkAxis: 2
+  targetAngle: 0
+  openOffset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1112988073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,8 +3234,10 @@ GameObject:
   - component: {fileID: 1529225205}
   - component: {fileID: 1529225204}
   - component: {fileID: 1529225203}
+  - component: {fileID: 1529225208}
   - component: {fileID: 1529225206}
-  m_Layer: 0
+  - component: {fileID: 1529225207}
+  m_Layer: 3
   m_Name: Dial_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3167,14 +3252,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529225201}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.58778524, z: 0, w: 0.809017}
   m_LocalPosition: {x: 0.026, y: 0.01, z: 0}
   m_LocalScale: {x: 0.02, y: 0.003, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 230782391}
   m_Father: {fileID: 268248189}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -72, z: 0}
 --- !u!136 &1529225203
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3194,10 +3279,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.53
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1529225204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3260,8 +3345,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be542a6cf661f7f4e94e8bb64fe63f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 15
-  rotationAxis: {x: 1, y: 0, z: 0}
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationStep: 36
+--- !u!114 &1529225207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529225201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248e449101d9d4595b914f5f6daa79ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1529225208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529225201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea6f937ff3d45eca7be4b21dde7679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1529225206}
+        m_TargetAssemblyTypeName: DialRotator, Assembly-CSharp
+        m_MethodName: Act_RotateDial
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1529225201}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1662937415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,8 +4061,10 @@ GameObject:
   - component: {fileID: 1922615911}
   - component: {fileID: 1922615910}
   - component: {fileID: 1922615909}
+  - component: {fileID: 1922615914}
   - component: {fileID: 1922615912}
-  m_Layer: 0
+  - component: {fileID: 1922615913}
+  m_Layer: 3
   m_Name: Dial_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3944,14 +4079,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922615907}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.3090171, z: 0, w: 0.95105654}
   m_LocalPosition: {x: 0.026, y: 0.04, z: 0}
   m_LocalScale: {x: 0.02, y: 0.003, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 430610225}
   m_Father: {fileID: 268248189}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -36, z: 0}
 --- !u!136 &1922615909
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3971,10 +4106,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.53
+  m_Height: 7.5208693
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.00000007450581, y: 0, z: -0.06406524}
 --- !u!23 &1922615910
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4037,8 +4172,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be542a6cf661f7f4e94e8bb64fe63f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 15
-  rotationAxis: {x: 1, y: 0, z: 0}
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationStep: 36
+--- !u!114 &1922615913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922615907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248e449101d9d4595b914f5f6daa79ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1922615914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922615907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea6f937ff3d45eca7be4b21dde7679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1922615912}
+        m_TargetAssemblyTypeName: DialRotator, Assembly-CSharp
+        m_MethodName: Act_RotateDial
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1922615907}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2035414668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4546,7 +4729,7 @@ GameObject:
   - component: {fileID: 6650683735834348033}
   - component: {fileID: 2854621913395939394}
   - component: {fileID: 2197515712625079652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Upper_part_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4600,7 +4783,7 @@ GameObject:
   - component: {fileID: 7010701659550833671}
   - component: {fileID: 3001677386637950327}
   - component: {fileID: 4670923228515993315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Upper_part_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5944,7 +6127,7 @@ Transform:
   m_GameObject: {fileID: 3617158682974187509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0245, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0.0245, y: 0.0485, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6907,9 +7090,8 @@ GameObject:
   - component: {fileID: 8118004600002693736}
   - component: {fileID: 6718942404701271715}
   - component: {fileID: 8118004600002693739}
-  - component: {fileID: 8118004600002693738}
-  - component: {fileID: 8118004600002693737}
-  m_Layer: 0
+  - component: {fileID: 8118004600002693740}
+  m_Layer: 3
   m_Name: UpperPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6928,7 +7110,9 @@ GameObject:
   - component: {fileID: 1067367114303084088}
   - component: {fileID: 2969275087635145458}
   - component: {fileID: 669759942488683618}
-  m_Layer: 0
+  - component: {fileID: 4143266755360790943}
+  - component: {fileID: 4143266755360790942}
+  m_Layer: 3
   m_Name: Padlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7045,13 +7229,13 @@ GameObject:
   - component: {fileID: 832880085057960512}
   - component: {fileID: 5024533847088437670}
   - component: {fileID: 2988944863912402023}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Upper_part_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4143266755360790941
 Transform:
   m_ObjectHideFlags: 0
@@ -7061,8 +7245,8 @@ Transform:
   m_GameObject: {fileID: 3617524672260162343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.957, y: 1.4, z: 2.38}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2193840290950729742}
@@ -7070,6 +7254,56 @@ Transform:
   - {fileID: 268248189}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4143266755360790942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617524672260162343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2444770195ceeb74c97a5be3c72d3a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: 
+--- !u!114 &4143266755360790943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617524672260162343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea6f937ff3d45eca7be4b21dde7679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4143266755360790942}
+        m_TargetAssemblyTypeName: Actor_Print, Assembly-CSharp
+        m_MethodName: Act_PrintMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uB2E4\uC774\uC5BC\uC744 \uB3CC\uB824\uC11C \uC7A0\uAE08\uC744
+            \uD574\uC81C\uD558\uC2DC\uC624."
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!33 &4177975079432803255
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7915,7 +8149,7 @@ GameObject:
   - component: {fileID: 4824844167811714282}
   - component: {fileID: 8456231368215970639}
   - component: {fileID: 5962316110603204485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Padlock_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7980,13 +8214,13 @@ GameObject:
   - component: {fileID: 5062099228869977473}
   - component: {fileID: 8210040100208110116}
   - component: {fileID: 4407234024602457238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Padlock_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5612558589000307894
 GameObject:
   m_ObjectHideFlags: 0
@@ -8032,7 +8266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &5693152189611469013
 GameObject:
   m_ObjectHideFlags: 0
@@ -8520,7 +8754,7 @@ GameObject:
   - component: {fileID: 7438394066803584266}
   - component: {fileID: 1842077700574443056}
   - component: {fileID: 4846053157025901623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Upper_part_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8580,7 +8814,7 @@ GameObject:
   - component: {fileID: 6058458989252548077}
   - component: {fileID: 7186658478459755080}
   - component: {fileID: 4924919867350740610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Padlock_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9565,7 +9799,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3617158682974187509}
   m_Mesh: {fileID: -8892132534892025544, guid: ef586d1277c489b4eb458afd617b1d25, type: 3}
---- !u!114 &8118004600002693737
+--- !u!114 &8118004600002693739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9574,11 +9808,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3617158682974187509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2444770195ceeb74c97a5be3c72d3a82, type: 3}
+  m_Script: {fileID: 11500000, guid: 248e449101d9d4595b914f5f6daa79ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: "\uB2E4\uC774\uC5BC\uC744 \uB3CC\uB824\uC11C \uC7A0\uAE08\uC744 \uD574\uC81C\uD558\uC2DC\uC624."
---- !u!114 &8118004600002693738
+--- !u!114 &8118004600002693740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9602,18 +9835,6 @@ MonoBehaviour:
   OnClickEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8118004600002693739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617158682974187509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248e449101d9d4595b914f5f6daa79ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8118296310883595232
 Transform:
   m_ObjectHideFlags: 0
@@ -9666,7 +9887,7 @@ GameObject:
   - component: {fileID: 9165969804837905379}
   - component: {fileID: 5231999057263520838}
   - component: {fileID: 8034206393945692300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Padlock_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9959,5 +10180,5 @@ SceneRoots:
   - {fileID: 363735998}
   - {fileID: 659021703}
   - {fileID: 5175528056323746449}
-  - {fileID: 942265805}
   - {fileID: 4143266755360790941}
+  - {fileID: 942265805}
